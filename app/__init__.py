@@ -1,10 +1,12 @@
 import json
-from os.path import isfile
+from os.path import isfile, join, dirname
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from app.crawl.crawl_movie import get_movies, movie_fname
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 movies = []
 
